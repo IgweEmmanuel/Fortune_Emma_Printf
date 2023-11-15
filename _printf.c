@@ -1,17 +1,16 @@
 #include "main.h"
 
 /**
- * print_buffer - Prints the contents of the buffer if it exists.
- * @buffer: Array of characters.
- * @buff_ind: Index at which to add the next character, represents the length.
+ * print_buffer - Prints the contents of the buffer if it contains characters.
+ * @buffer: Array of characters to be printed.
+ * @buff_ind: Index representing the length of the buffer.
  */
 void print_buffer(char buffer[], int *buff_ind);
 
 /**
- * _printf - Custom printf function.
+ * _printf - Printf function
  * @format: Format string.
- *
- * Return: Number of characters printed.
+ * Return: Number of printed characters.
  */
 int _printf(const char *format, ...)
 {
@@ -41,9 +40,9 @@ int _printf(const char *format, ...)
 			width = get_width(format, &i, list);
 			precision = get_precision(format, &i, list);
 			size = get_size(format, &i);
-			++i;
+			i++; /* Increment i here rather than in the loop header. */
 			printed = handle_print(format, &i, list, buffer,
-				flags, width, precision, size);
+								   flags, width, precision, size);
 			if (printed == -1)
 				return (-1);
 			printed_chars += printed;
@@ -58,14 +57,14 @@ int _printf(const char *format, ...)
 }
 
 /**
- * print_buffer - Prints the contents of the buffer if it exists.
- * @buffer: Array of characters.
- * @buff_ind: Index at which to add the next character, represents the length.
+ * print_buffer - Prints the contents of the buffer if it contains characters.
+ * @buffer: Array of characters to be printed.
+ * @buff_ind: Index representing the length of the buffer.
  */
 void print_buffer(char buffer[], int *buff_ind)
 {
 	if (*buff_ind > 0)
-		write(1, &buffer[0], *buff_ind);
+		write(1, buffer, *buff_ind);
 
 	*buff_ind = 0;
 }
