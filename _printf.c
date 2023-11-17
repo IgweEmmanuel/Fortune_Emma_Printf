@@ -9,7 +9,7 @@ void print_buffer(char buffer[], int *buff_ind);
 
 /**
  * _printf - Printf function
- * @format: Format string.
+ * @*format: Format string.
  * Return: Number of printed characters.
  */
 int _printf(const char *format, ...)
